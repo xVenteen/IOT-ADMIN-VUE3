@@ -61,6 +61,7 @@ export default {
     const password = ref("");
     const onSubmit = (values) => {
       console.log("submit", values);
+      router.push("/home");
     };
 
     const registClick = () => {
@@ -70,7 +71,6 @@ export default {
       username,
       password,
       onSubmit,
-
       registClick,
     };
   },
