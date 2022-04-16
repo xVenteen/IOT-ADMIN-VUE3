@@ -20,7 +20,6 @@
                 name="用户名"
                 label="用户名"
                 placeholder="请输入用户名"
-                error
                 :rules="[{ required: true, message: '请填写用户名' }]"
               />
               <van-field
@@ -29,7 +28,7 @@
                 name="密码"
                 label="密码"
                 placeholder="请输入密码"
-                :rules="[{ required: true, message: '请填写密码' }]"
+                :rules="[{ required: true, message: '请确认密码' }]"
               />
             </van-cell-group>
             <div style="margin: 16px">
@@ -40,7 +39,7 @@
           </van-form>
         </div>
         <div class="footer">
-          <p>没有账号去注册!</p>
+          <p @click="registClick">没有账号去注册!</p>
           |
           <p>忘记密码?</p>
         </div>
@@ -50,10 +49,11 @@
 </template>
 
 <script>
-import { Button, Field, CellGroup } from "vant";
+import { Button, Field, CellGroup, Form } from "vant";
 import { get } from "@/api/login.js";
 import { reactive } from "@vue/reactivity";
 import { ref } from "vue";
+import router from "@/router/index.js";
 export default {
   name: "login",
   setup() {
@@ -62,25 +62,23 @@ export default {
     const onSubmit = (values) => {
       console.log("submit", values);
     };
-    let user = reactive({
-      login: "hha",
-    });
-    const click = async () => {
-      const mesg = await get();
-      user.login = mesg.data[0].login;
+
+    const registClick = () => {
+      router.push("regist");
     };
     return {
       username,
       password,
       onSubmit,
-      user,
-      click,
+
+      registClick,
     };
   },
   components: {
     [Button.name]: Button,
     [Field.name]: Field,
     [CellGroup.name]: CellGroup,
+    [Form.name]: Form,
   },
 };
 </script>
