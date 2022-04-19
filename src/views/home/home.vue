@@ -14,7 +14,7 @@
       <div class="data-show">
         <van-row justify="space-between">
           <van-col span="11" class="one adata">
-            <div class="mesg">
+            <div class="mesg" @click="$router.push('temperature')">
               <p>13.8℃</p>
               <p>温度监测</p>
             </div>
@@ -92,7 +92,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
 .containe {
   width: 100vw;
   height: 100vh;
