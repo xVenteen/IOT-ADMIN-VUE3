@@ -1,0 +1,79 @@
+<template>
+  <div>
+    <div id="myChart" :style="{ width: '100%', height: '300px' }"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "pie",
+};
+</script>
+<script setup>
+import * as echarts from "echarts";
+import { onMounted } from "vue";
+onMounted(() => {
+  // 这里是由于图表渲染快于父元素导致图表比例溢出，做的一个延缓操作
+  setTimeout(() => {
+    line();
+  }, 1000);
+});
+
+const line = () => {
+  let myChart = echarts.init(document.getElementById("myChart"));
+  myChart.setOption({
+    title: {
+      text: "温度占比",
+      left: "center",
+      top: "center",
+    },
+    legend: {
+      bottom: "1%",
+      left: "center",
+    },
+    series: [
+      {
+        type: "pie",
+        data: [
+          {
+            value: 19,
+            name: "风速",
+          },
+          {
+            value: 57.6,
+            name: "二氧化碳",
+          },
+          {
+            value: 23.4,
+            name: "温度",
+          },
+        ],
+        radius: ["30%", "60%"],
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: "15",
+            fontWeight: "bold",
+          },
+        },
+        itemStyle: {
+          normal: {
+            label: {
+              show: true,
+              formatter: "{b}\n{d}%",
+            },
+            labelLine: { show: true },
+          },
+        },
+      },
+    ],
+  });
+  window.onresize = function () {
+    //自适应大小, 不用的话不会自适应大小。
+    myChart.resize();
+  };
+};
+</script>
+
+<style>
+</style>

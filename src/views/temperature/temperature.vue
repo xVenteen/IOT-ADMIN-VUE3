@@ -40,16 +40,21 @@
           </div>
         </div>
       </div>
+      <div class="pie">
+        <pie></pie>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { Progress } from "vant";
+import pie from "@/components/echarts/pie.vue";
 export default {
   name: "temperature",
   components: {
     [Progress.name]: Progress,
+    pie,
   },
 };
 </script>
