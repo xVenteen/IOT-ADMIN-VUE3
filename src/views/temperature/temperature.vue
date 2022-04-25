@@ -40,8 +40,13 @@
           </div>
         </div>
       </div>
-      <div class="pie">
-        <pie></pie>
+      <div class="main">
+        <div class="pie">
+          <pie></pie>
+        </div>
+        <div class="category">
+          <category></category>
+        </div>
       </div>
     </div>
   </div>
@@ -50,11 +55,13 @@
 <script>
 import { Progress } from "vant";
 import pie from "@/components/echarts/pie.vue";
+import category from "@/components/echarts/category.vue";
 export default {
   name: "temperature",
   components: {
     [Progress.name]: Progress,
     pie,
+    category,
   },
 };
 </script>
