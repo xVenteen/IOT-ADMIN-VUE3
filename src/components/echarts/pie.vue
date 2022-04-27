@@ -18,56 +18,83 @@ onMounted(() => {
     line();
   }, 1000);
 });
-
-const line = () => {
-  let myChart = echarts.init(document.getElementById("myChart"));
-  myChart.setOption({
-    title: {
-      text: "温度占比",
-      left: "center",
-      top: "center",
-    },
-    legend: {
-      bottom: "1%",
-      left: "center",
-    },
-    series: [
-      {
-        type: "pie",
-        data: [
-          {
-            value: 19,
-            name: "风速",
-          },
-          {
-            value: 57.6,
-            name: "二氧化碳",
-          },
-          {
-            value: 23.4,
-            name: "温度",
-          },
-        ],
-        radius: ["30%", "60%"],
-        emphasis: {
-          label: {
-            show: true,
-            fontSize: "15",
-            fontWeight: "bold",
+let option = {
+  title: {
+    text: "温度占比",
+    left: "center",
+    top: "center",
+  },
+  legend: {
+    bottom: "1%",
+    left: "center",
+  },
+  series: [
+    {
+      type: "pie",
+      data: [
+        {
+          value: 19,
+          name: "风速",
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(1, 1, 1, 0, [
+                { offset: 0, color: "#4461f4" },
+                { offset: 0.5, color: "#8481ff" },
+                // { offset: 0, color: "#8481ff" },
+              ]),
+            },
           },
         },
-        itemStyle: {
-          normal: {
-            label: {
-              show: true,
-              formatter: "{b}\n{d}%",
+        {
+          value: 57.6,
+          name: "二氧化碳",
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(0, 1, 1, 1, [
+                { offset: 0, color: "#0659ff" },
+                { offset: 0.5, color: "#19b3fe" },
+                // { offset: 0, color: "#8481ff" },
+              ]),
             },
-            labelLine: { show: true },
           },
+        },
+        {
+          value: 23.4,
+          name: "温度",
+          itemStyle: {
+            normal: {
+              color: new echarts.graphic.LinearGradient(1, 1, 1, 0, [
+                { offset: 0, color: "#fa8d29" },
+                { offset: 0.5, color: "#fdc922" },
+                // { offset: 0, color: "#8481ff" },
+              ]),
+            },
+          },
+        },
+      ],
+      radius: ["30%", "60%"],
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: "15",
+          fontWeight: "bold",
         },
       },
-    ],
-  });
+      itemStyle: {
+        normal: {
+          label: {
+            show: true,
+            formatter: "{b}\n{d}%",
+          },
+          labelLine: { show: true },
+        },
+      },
+    },
+  ],
+};
+const line = () => {
+  let myChart = echarts.init(document.getElementById("myChart"));
+  myChart.setOption(option);
   window.onresize = function () {
     //自适应大小, 不用的话不会自适应大小。
     myChart.resize();

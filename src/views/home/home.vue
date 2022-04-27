@@ -48,7 +48,7 @@
             </div>
           </van-col>
           <van-col span="11" class="three adata">
-            <div class="mesg">
+            <div class="mesg" @click="$router.push('light')">
               <p>80 lux</p>
               <p>光强监测</p>
             </div>

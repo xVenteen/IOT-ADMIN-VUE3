@@ -71,8 +71,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .title {
+    display: flex;
     margin-bottom: 30px;
+    justify-content: center;
   }
   .data-boxs {
     color: white;
