@@ -45,7 +45,7 @@
           <pie></pie>
         </div>
         <div class="category">
-          <category></category>
+          <category :option="option"></category>
         </div>
       </div>
     </div>
@@ -62,6 +62,49 @@ export default {
     [Progress.name]: Progress,
     pie,
     category,
+  },
+  setup() {
+    let option = {
+      xAxis: {
+        type: "category",
+        data: ["2AM", "6AM", "10AM", "14AM", "18PM", "22PM"],
+      },
+      yAxis: {
+        type: "value",
+        axisLabel: {
+          formatter: "{value} °C",
+        },
+      },
+      series: [
+        {
+          data: [14.1, 9.6, 17.8, 18.2, 16.4, 20.1],
+          type: "line",
+          smooth: true,
+          lineStyle: {
+            normal: {
+              width: 5,
+              color: {
+                type: "linear",
+                x: 0,
+                y: 0,
+                colorStops: [
+                  {
+                    offset: 0,
+                    color: "#4267ff",
+                  },
+                  { offset: 1, color: "#18b4fe" },
+                ],
+              },
+              shadowColor: "#4267ff",
+              shadowOffsetY: 6,
+              shadowBlur: 6,
+              opacity: 1,
+            },
+          },
+        },
+      ],
+    };
+    return { option };
   },
 };
 </script>

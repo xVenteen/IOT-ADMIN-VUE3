@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div :id="id" :style="{ width: '100%', height: '300px' }"></div>
+    <div :id="id" :style="{ width: '100%', height: '150px' }"></div>
   </div>
 </template>
 
@@ -24,39 +24,107 @@ onMounted(() => {
   // 这里是由于图表渲染快于父元素导致图表比例溢出，做的一个延缓操作
   setTimeout(() => {
     line();
-  }, 1000);
+  }, 500);
 });
 let option = {
   series: [
     {
-      name: "业务指标",
       type: "gauge",
-      //   detail: { formatter: "{value}%" },
-      data: [{ value: 50, name: "完成率" }],
-      axisLine: {
+      center: ["50%", "60%"],
+      startAngle: 180,
+      endAngle: 0,
+      min: 40,
+      max: 150,
+      splitNumber: 5,
+      itemStyle: {
+        color: "#FFAB91",
+      },
+      progress: {
         show: true,
+        width: 30,
+      },
+      pointer: {
+        show: false,
+      },
+      axisLine: {
         lineStyle: {
-          color: [
-            [
-              1,
-              new echarts.graphic.LinearGradient(0, 0, 1, 0, [
-                {
-                  offset: 0.1,
-                  color: "#FFC600",
-                },
-                {
-                  offset: 0.6,
-                  color: "#30D27C",
-                },
-                {
-                  offset: 1,
-                  color: "#0B95FF",
-                },
-              ]),
-            ],
-          ],
+          width: 30,
         },
       },
+      axisTick: false,
+      splitLine: {
+        distance: -35,
+        length: 4,
+        lineStyle: {
+          width: 3,
+          color: "#999",
+        },
+      },
+      axisLabel: {
+        distance: 10,
+        color: "#999",
+        fontSize: 10,
+      },
+      anchor: {
+        show: false,
+      },
+      title: {
+        show: false,
+      },
+      detail: {
+        valueAnimation: true,
+        width: "40%",
+        lineHeight: 40,
+        borderRadius: 8,
+        offsetCenter: [0, "-15%"],
+        fontSize: 10,
+        fontWeight: "bolder",
+        formatter: "{value} lux",
+        color: "auto",
+      },
+      data: [
+        {
+          value: 80,
+        },
+      ],
+    },
+    {
+      type: "gauge",
+      center: ["50%", "60%"],
+      startAngle: 180,
+      endAngle: 0,
+      min: 40,
+      max: 150,
+      itemStyle: {
+        color: "#FD7347",
+      },
+      progress: {
+        show: true,
+        width: 8,
+      },
+      pointer: {
+        show: false,
+      },
+      axisLine: {
+        show: false,
+      },
+      axisTick: {
+        show: false,
+      },
+      splitLine: {
+        show: false,
+      },
+      axisLabel: {
+        show: false,
+      },
+      detail: {
+        show: false,
+      },
+      data: [
+        {
+          value: 80,
+        },
+      ],
     },
   ],
 };

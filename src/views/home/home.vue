@@ -92,7 +92,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scope>
+<style lang="scss">
 .containe {
   width: 100vw;
   height: 100vh;
