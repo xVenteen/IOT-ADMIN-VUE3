@@ -31,7 +31,7 @@
             </div>
           </van-col>
           <van-col span="11" class="two adata">
-            <div class="mesg">
+            <div class="mesg" @click="$router.push('humidity')">
               <p>42%</p>
               <p>湿度监测</p>
             </div>

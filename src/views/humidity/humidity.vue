@@ -1,12 +1,12 @@
 <template>
   <div class="containe">
     <div class="header">
-      <div class="title">实时温度数据监测</div>
+      <div class="title">实时湿度数据监测</div>
       <div class="data-boxs">
         <div class="one adata">
           <div class="mesg">
-            <p style="margin-right: 10px">13.8℃</p>
-            <p>温度</p>
+            <p style="margin-right: 10px">52%</p>
+            <p>湿度</p>
           </div>
           <div class="progress">
             <van-progress
@@ -21,22 +21,24 @@
           </div>
         </div>
         <div class="two adata2">
-          <div class="adata-pic co2">
-            <p style="margin-left: 10px">CO</p>
-            <p style="font-size: 10px; margin-right: 10px">2</p>
+          <div class="adata-pic">
+            <img src="src/assets/Humidity-page_air-humidity-icon.png" alt="" />
           </div>
           <div class="mesg">
-            <p>二氧化碳</p>
-            <p>178mg</p>
+            <p>空气湿度</p>
+            <p>65%</p>
           </div>
         </div>
         <div class="three adata2">
           <div class="adata-pic">
-            <img src="src/assets/Temperature-page_wind-icon.png" alt="" />
+            <img
+              src="src/assets/Humidity-page_soil-moisture-icon-.png"
+              alt=""
+            />
           </div>
           <div class="mesg">
-            <p>风速</p>
-            <p>26km/h</p>
+            <p>土壤湿度</p>
+            <p>15.8%</p>
           </div>
         </div>
       </div>
@@ -58,7 +60,7 @@ import pie from "@/components/echarts/pie.vue";
 import category from "@/components/echarts/category.vue";
 import * as echarts from "echarts";
 export default {
-  name: "temperature",
+  name: "humidity",
   components: {
     [Progress.name]: Progress,
     pie,
@@ -66,6 +68,18 @@ export default {
   },
   setup() {
     let option = {
+      xAxis: {
+        type: "category",
+        data: ["2AM", "6AM", "10AM", "14AM", "18PM", "22PM"],
+      },
+
+      yAxis: {
+        type: "value",
+        splitNumber: 5,
+        axisLabel: {
+          formatter: "{value} %",
+        },
+      },
       grid: {
         left: "20",
         containLabel: true,
@@ -76,19 +90,9 @@ export default {
           type: "cross",
         },
       },
-      xAxis: {
-        type: "category",
-        data: ["2AM", "6AM", "10AM", "14AM", "18PM", "22PM"],
-      },
-      yAxis: {
-        type: "value",
-        axisLabel: {
-          formatter: "{value} °C",
-        },
-      },
       series: [
         {
-          data: [14.1, 9.6, 17.8, 18.2, 16.4, 20.1],
+          data: [56, 31, 68, 71, 26, 81],
           type: "line",
           smooth: true,
           showSymbol: false,
@@ -118,7 +122,7 @@ export default {
     };
     let optionPie = {
       title: {
-        text: "温度占比",
+        text: "湿度占比",
         left: "center",
         top: "center",
       },
@@ -131,39 +135,39 @@ export default {
           type: "pie",
           data: [
             {
-              value: 19,
-              name: "风速",
+              value: 23.4,
+              name: "湿度",
               itemStyle: {
                 normal: {
                   color: new echarts.graphic.LinearGradient(1, 1, 1, 0, [
-                    { offset: 0, color: "#4461f4" },
-                    { offset: 0.5, color: "#8481ff" },
-                    // { offset: 0, color: "#8481ff" },
+                    { offset: 0, color: "#45aff7" },
+                    // { offset: 0.5, color: "#75cafc" },
+                    { offset: 1, color: "#75cafc" },
                   ]),
                 },
               },
             },
             {
               value: 57.6,
-              name: "二氧化碳",
+              name: "空气湿度",
               itemStyle: {
                 normal: {
                   color: new echarts.graphic.LinearGradient(0, 1, 1, 1, [
-                    { offset: 0, color: "#0659ff" },
-                    { offset: 0.5, color: "#19b3fe" },
+                    { offset: 0, color: "#06c0dd" },
+                    { offset: 1, color: "#25d5f9" },
                     // { offset: 0, color: "#8481ff" },
                   ]),
                 },
               },
             },
             {
-              value: 23.4,
-              name: "温度",
+              value: 19,
+              name: "土壤湿度",
               itemStyle: {
                 normal: {
                   color: new echarts.graphic.LinearGradient(1, 1, 1, 0, [
-                    { offset: 0, color: "#fa8d29" },
-                    { offset: 0.5, color: "#fdc922" },
+                    { offset: 0, color: "#9727d7" },
+                    { offset: 0.5, color: "#c256fa" },
                     // { offset: 0, color: "#8481ff" },
                   ]),
                 },
@@ -183,6 +187,7 @@ export default {
               label: {
                 show: true,
                 formatter: "{b}\n{d}%",
+                // color: "rgb(225,225,225,1)",
               },
               labelLine: { show: true },
             },
@@ -212,13 +217,13 @@ export default {
     display: flex;
     justify-content: space-between;
     .one {
-      background: url("src/assets/Temperature-page_Temperature.png");
+      background: url("src/assets/Humidity-page_Humidit-black.png");
     }
     .two {
-      background: url("src/assets/Temperature-page_carbon-dioxide.png");
+      background: url("src/assets/Humidity-page_air-humidity.png");
     }
     .three {
-      background: url("src/assets/Temperature-page_wind-speed.png");
+      background: url("src/assets/Humidity-page_soil-moisture.png");
     }
     .adata {
       height: 140px;
@@ -231,10 +236,10 @@ export default {
       background-size: 100% 100%;
       .mesg {
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
+        justify-content: space-around;
+        align-items: baseline;
         :nth-child(2) {
-          font-size: 40px;
+          font-size: 30px;
         }
       }
       .progress {
@@ -253,9 +258,9 @@ export default {
       border-radius: 20px;
       //   overflow: hidden;
       background-size: 100% 100%;
-      .co2 {
-        background: url("src/assets/Temperature-page_white-background.png");
-      }
+      //   .co2 {
+      //     background: url("src/assets/Humidity-page_air-humidity-icon.png");
+      //   }
       .adata-pic {
         // width: 100%;
         line-height: 140px;
@@ -265,18 +270,6 @@ export default {
         background-size: 100px 100px;
         background-repeat: no-repeat;
         background-position: 15px 20px;
-        p {
-          font-weight: 800;
-          font-size: 35px;
-          background-image: -webkit-linear-gradient(
-            bottom,
-            #167ee7,
-            #59c0eb,
-            #59c0eb
-          );
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
         img {
           margin: auto 12px;
           width: 100px;

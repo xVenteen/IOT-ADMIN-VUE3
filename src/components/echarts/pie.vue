@@ -11,7 +11,13 @@ export default {
 </script>
 <script setup>
 import * as echarts from "echarts";
-import { onMounted } from "vue";
+import { onMounted, defineProps } from "vue";
+const props = defineProps({
+  option: {
+    type: Object,
+    required: true,
+  },
+});
 onMounted(() => {
   // 这里是由于图表渲染快于父元素导致图表比例溢出，做的一个延缓操作
   setTimeout(() => {
@@ -94,7 +100,7 @@ let option = {
 };
 const line = () => {
   let myChart = echarts.init(document.getElementById("myChart"));
-  myChart.setOption(option);
+  myChart.setOption(props.option);
   window.onresize = function () {
     //自适应大小, 不用的话不会自适应大小。
     myChart.resize();

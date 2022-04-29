@@ -27,6 +27,11 @@ const routes = [{
     path: '/light',
     name: 'light',
     component: () => import('@/views/light/light.vue')
+}, {
+    path: '/humidity',
+    name: 'humidity',
+    component: () => import('@/views/humidity/humidity.vue')
+
 }
 ]
 
