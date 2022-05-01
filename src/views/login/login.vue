@@ -13,11 +13,11 @@
       <div class="login-form">
         <div class="title2"><p>智慧农业后台管理系统</p></div>
         <div class="form">
-          <van-form @submit="onSubmit">
+          <van-form @submit="Login">
             <van-cell-group inset>
               <van-field
                 v-model="username"
-                name="用户名"
+                name="userName"
                 label="用户名"
                 placeholder="请输入用户名"
                 :rules="[{ required: true, message: '请填写用户名' }]"
@@ -25,14 +25,20 @@
               <van-field
                 v-model="password"
                 type="password"
-                name="密码"
+                name="passWord"
                 label="密码"
                 placeholder="请输入密码"
                 :rules="[{ required: true, message: '请确认密码' }]"
               />
             </van-cell-group>
             <div style="margin: 16px">
-              <van-button round block type="primary" native-type="submit">
+              <van-button
+                round
+                block
+                type="primary"
+                native-type="submit"
+                @click="myLogin()"
+              >
                 登录
               </van-button>
             </div>
@@ -50,7 +56,7 @@
 
 <script>
 import { Button, Field, CellGroup, Form } from "vant";
-import { get } from "@/api/login.js";
+import { login, init } from "@/api/login.js";
 import { reactive } from "@vue/reactivity";
 import { ref } from "vue";
 import router from "@/router/index.js";
@@ -59,10 +65,12 @@ export default {
   setup() {
     const username = ref("");
     const password = ref("");
-    const onSubmit = (values) => {
-      console.log("submit", values);
-      router.push("/home");
-    };
+    // const Login = (values) => {
+    //   console.log("submit", values);
+    //   login(values);
+    //   console.log(code);
+    //   // router.push("/home");
+    // };
 
     const registClick = () => {
       router.push("regist");
@@ -70,9 +78,22 @@ export default {
     return {
       username,
       password,
-      onSubmit,
+      // Login,
       registClick,
     };
+  },
+  created() {
+    init({});
+  },
+  methods: {
+    async myLogin() {
+      let code = await login({
+        userName: this.username,
+        passWord: this.password,
+      });
+      console.log("code");
+      console.log(code);
+    },
   },
   components: {
     [Button.name]: Button,

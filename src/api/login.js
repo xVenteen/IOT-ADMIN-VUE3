@@ -1,8 +1,17 @@
 import axios from '@/utils/axios'
 
-export const get = () => {
+export const init = (data) => {
     return axios({
-        url: '/users',
-        method: 'get'
+        url: '/api',
+        method: 'post',
+        data
+    })
+}
+
+export const login = (data) => {
+    return axios({
+        url: '/api/login',
+        method: 'post',
+        data
     })
 }
