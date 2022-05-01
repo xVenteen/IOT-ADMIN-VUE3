@@ -32,13 +32,7 @@
               />
             </van-cell-group>
             <div style="margin: 16px">
-              <van-button
-                round
-                block
-                type="primary"
-                native-type="submit"
-                @click="myLogin()"
-              >
+              <van-button round block type="primary" native-type="submit">
                 登录
               </van-button>
             </div>
@@ -56,7 +50,7 @@
 
 <script>
 import { Button, Field, CellGroup, Form } from "vant";
-import { login, init } from "@/api/login.js";
+import { login } from "@/api/login.js";
 import { reactive } from "@vue/reactivity";
 import { ref } from "vue";
 import router from "@/router/index.js";
@@ -65,12 +59,12 @@ export default {
   setup() {
     const username = ref("");
     const password = ref("");
-    // const Login = (values) => {
-    //   console.log("submit", values);
-    //   login(values);
-    //   console.log(code);
-    //   // router.push("/home");
-    // };
+    const Login = (values) => {
+      console.log("submit", values);
+      login(values);
+      console.log(code);
+      // router.push("/home");
+    };
 
     const registClick = () => {
       router.push("regist");
@@ -78,23 +72,21 @@ export default {
     return {
       username,
       password,
-      // Login,
+      Login,
       registClick,
     };
   },
-  created() {
-    init({});
-  },
-  methods: {
-    async myLogin() {
-      let code = await login({
-        userName: this.username,
-        passWord: this.password,
-      });
-      console.log("code");
-      console.log(code);
-    },
-  },
+
+  // methods: {
+  //   async myLogin() {
+  //     let code = await login({
+  //       userName: this.username,
+  //       passWord: this.password,
+  //     });
+  //     console.log("code");
+  //     console.log(code);
+  //   },
+  // },
   components: {
     [Button.name]: Button,
     [Field.name]: Field,
