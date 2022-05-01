@@ -46,7 +46,7 @@ const start = () => {
             })
         }
         else if (request.method == 'OPTIONS')
-            console.log('zhe'); {
+            {
             // response.setHeader("Access-Control-Allow-Origin", 'http://localhost:4000')
             response.writeHead(200, {
                 "Access-Control-Allow-Origin": "http://localhost:4000",
