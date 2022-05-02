@@ -1,7 +1,14 @@
 <template>
   <div class="containe">
     <div class="header">
-      <div class="title">实时光强数据监测</div>
+      <van-nav-bar
+        title="实时光强数据监测"
+        left-text="返回"
+        left-arrow
+        @click-left="$router.push('home')"
+        style="margin: 20px 0"
+      />
+
       <div class="data-boxs">
         <div class="one adata">
           <div class="mesg">
@@ -91,11 +98,16 @@
 <script>
 import gauge from "@/components/echarts/gauge.vue";
 import category from "@/components/echarts/category.vue";
-import { Progress } from "vant";
+import { Progress, NavBar } from "vant";
 import * as echarts from "echarts";
 export default {
   name: "light",
-  components: { gauge, category, [Progress.name]: Progress },
+  components: {
+    gauge,
+    category,
+    [Progress.name]: Progress,
+    [NavBar.name]: NavBar,
+  },
   setup() {
     let option = {
       color: ["#FFBF00"],

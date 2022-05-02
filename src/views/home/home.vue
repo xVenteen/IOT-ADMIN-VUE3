@@ -1,5 +1,6 @@
 <template>
   <div class="containe">
+    <div class="atitle">首 页</div>
     <div class="banner">
       <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
         <van-swipe-item v-for="image in images" :key="image">
@@ -99,6 +100,12 @@ export default {
   overflow: auto;
   overflow: hidden;
   background-color: white;
+  .atitle {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-weight: 700;
+  }
   .banner {
     margin: 15px;
     border-radius: 25px;

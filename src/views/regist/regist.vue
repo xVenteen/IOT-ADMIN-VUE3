@@ -94,7 +94,6 @@ export default {
       } else if (code === "3") {
         Notify({ type: "danger", message: "用户名存在" });
       }
-      // router.push("regist");
     };
     return {
       username,

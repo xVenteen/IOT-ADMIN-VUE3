@@ -1,7 +1,14 @@
 <template>
   <div class="containe">
     <div class="header">
-      <div class="title">实时温度数据监测</div>
+      <van-nav-bar
+        title="实时温度数据监测"
+        left-text="返回"
+        left-arrow
+        @click-left="$router.push('home')"
+        style="margin: 20px 0"
+      />
+
       <div class="data-boxs">
         <div class="one adata">
           <div class="mesg">
@@ -53,7 +60,7 @@
 </template>
 
 <script>
-import { Progress } from "vant";
+import { Progress, NavBar } from "vant";
 import pie from "@/components/echarts/pie.vue";
 import category from "@/components/echarts/category.vue";
 import * as echarts from "echarts";
@@ -61,6 +68,7 @@ export default {
   name: "temperature",
   components: {
     [Progress.name]: Progress,
+    [NavBar.name]: NavBar,
     pie,
     category,
   },
@@ -195,16 +203,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .containe {
   display: flex;
   flex-direction: column;
   align-items: center;
 
   .title {
-    display: flex;
-    margin-bottom: 30px;
-    justify-content: center;
+    // display: flex;
+    // margin-bottom: 30px;
+    // justify-content: center;
   }
   .data-boxs {
     color: white;
@@ -297,5 +305,15 @@ export default {
       }
     }
   }
+}
+.van-ellipsis {
+  overflow: visible;
+}
+:root {
+  // --van-nav-bar-title-font-size: 40px;
+  --van-font-size-md: 40px;
+  --van-font-size-lg: 40px;
+  --van-nav-bar-height: 100px;
+  --van-font-weight-bold: 800;
 }
 </style>
