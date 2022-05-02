@@ -7,3 +7,11 @@ export const login = (data) => {
         data
     })
 }
+
+export const regist = (data) => {
+    return axios({
+        url: '/api/regist',
+        method: 'post',
+        data
+    })
+}

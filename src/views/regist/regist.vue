@@ -13,11 +13,11 @@
       <div class="regist-form">
         <div class="title2"><p>智慧农业后台管理系统注册</p></div>
         <div class="form">
-          <van-form @submit="onSubmit">
+          <van-form @submit="registClick">
             <van-cell-group inset>
               <van-field
                 v-model="username"
-                name="用户名"
+                name="userName"
                 label="用户名"
                 placeholder="请输入用户名"
                 :rules="[{ required: true, message: '请填写用户名' }]"
@@ -25,7 +25,7 @@
               <van-field
                 v-model="password"
                 type="password"
-                name="密码"
+                name="passWord"
                 label="密码"
                 placeholder="请输入密码"
                 :rules="[
@@ -39,7 +39,7 @@
               <van-field
                 v-model="password2"
                 type="password"
-                name="确认密码"
+                name="password2"
                 label="确认密码"
                 placeholder="请再次输入密码"
                 :rules="[
@@ -67,7 +67,8 @@
 </template>
 
 <script>
-import { Button, Field, CellGroup, Form } from "vant";
+import { Button, Field, CellGroup, Form, Notify } from "vant";
+import { regist } from "@/api/user.js";
 import { reactive } from "@vue/reactivity";
 import { ref } from "vue";
 import router from "@/router/index.js";
@@ -78,13 +79,22 @@ export default {
     const password = ref("");
     const password2 = ref("");
     const passVerify = (val) => /^[0-9a-zA-Z]{6,12}$/.test(val);
-    const passConfirm = (val) => password === val;
-    const onSubmit = (values) => {
-      console.log("submit", values);
-    };
-
-    const registClick = () => {
-      router.push("regist");
+    const passConfirm = () => password2.value === password.value;
+    const registClick = async (values) => {
+      console.log(values);
+      const msg = await regist({
+        passWord: password.value,
+        userName: username.value,
+      });
+      let code = msg.data.code;
+      console.log(code);
+      if (code === "1") {
+        Notify({ type: "success", message: "注册成功" });
+        router.push("login");
+      } else if (code === "3") {
+        Notify({ type: "danger", message: "用户名存在" });
+      }
+      // router.push("regist");
     };
     return {
       username,
@@ -92,8 +102,6 @@ export default {
       password2,
       passVerify,
       passConfirm,
-      onSubmit,
-
       registClick,
     };
   },

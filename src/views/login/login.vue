@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import { Button, Field, CellGroup, Form } from "vant";
-import { login } from "@/api/login.js";
+import { Button, Field, CellGroup, Form, Notify } from "vant";
+import { login } from "@/api/user.js";
 import { reactive } from "@vue/reactivity";
 import { ref } from "vue";
 import router from "@/router/index.js";
@@ -59,11 +59,19 @@ export default {
   setup() {
     const username = ref("");
     const password = ref("");
-    const Login = (values) => {
-      console.log("submit", values);
-      login(values);
+    const Login = async (values) => {
+      let msg = await login(values);
+      let code = msg.data.code;
       console.log(code);
-      // router.push("/home");
+      if (code == "1") {
+        router.push("/home");
+      } else if (code == "2") {
+        Notify({ type: "danger", message: "密码错误" });
+        password.value = "";
+      } else if (code == "3") {
+        Notify({ type: "danger", message: "用户名错误" });
+        password.value = "";
+      }
     };
 
     const registClick = () => {
@@ -77,16 +85,6 @@ export default {
     };
   },
 
-  // methods: {
-  //   async myLogin() {
-  //     let code = await login({
-  //       userName: this.username,
-  //       passWord: this.password,
-  //     });
-  //     console.log("code");
-  //     console.log(code);
-  //   },
-  // },
   components: {
     [Button.name]: Button,
     [Field.name]: Field,
@@ -98,7 +96,6 @@ export default {
 
 <style lang="scss" >
 .container {
-  //   background: url("@/assets/Login-page_Illustration.png");
   position: relative;
   width: 100vw;
   height: 100vh;
