@@ -36,7 +36,7 @@ route = (pathname, request, response) => {
                             }
                         }
                         response.writeHead(200, {
-                            "Access-Control-Allow-Origin": "http://localhost:4000",
+                            "Access-Control-Allow-Origin": "*",
                             "Access-Control-Allow-Headers": "Content-Type",
                             "Content-Type": "application/json"
                         });
@@ -71,7 +71,7 @@ route = (pathname, request, response) => {
                             }
                         }
                         response.writeHead(200, {
-                            "Access-Control-Allow-Origin": "http://localhost:4000",
+                            "Access-Control-Allow-Origin": "*",
                             "Access-Control-Allow-Headers": "Content-Type",
                             "Content-Type": "application/json"
                         });
@@ -87,7 +87,7 @@ route = (pathname, request, response) => {
             case '/api/getlight': {
                 let data = { technology: 76, accessible: 65, safe: 90 }
                 response.writeHead(200, {
-                    "Access-Control-Allow-Origin": "http://localhost:4000",
+                    "Access-Control-Allow-Origin": "*",
                     "Access-Control-Allow-Headers": "Content-Type",
                     "Content-Type": "application/json"
                 });
@@ -97,9 +97,9 @@ route = (pathname, request, response) => {
         }
     }
     else if (request.method === 'OPTIONS') {
-        // response.setHeader("Access-Control-Allow-Origin", 'http://localhost:4000')
+        // response.setHeader("Access-Control-Allow-Origin", '*')
         response.writeHead(200, {
-            "Access-Control-Allow-Origin": "http://localhost:4000",
+            "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers": "Content-Type",
             // "Access-Control-Allow-Methods": "PUT"
         });
