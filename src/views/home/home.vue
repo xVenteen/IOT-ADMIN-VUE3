@@ -2,25 +2,25 @@
   <div class="containe">
     <div class="atitle">首 页</div>
     <div class="banner">
-      <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
-        <van-swipe-item v-for="image in images" :key="image">
+      <Swipe class="my-swipe" :autoplay="3000" indicator-color="white">
+        <SwipeItem v-for="image in images" :key="image">
           <img :src="image" alt="" style="width: 100vw" />
-        </van-swipe-item>
-      </van-swipe>
+        </SwipeItem>
+      </Swipe>
     </div>
     <body>
       <div class="title">
         <p>数据中心</p>
       </div>
       <div class="data-show">
-        <van-row justify="space-between">
-          <van-col span="11" class="one adata">
+        <Row justify="space-between">
+          <Col span="11" class="one adata">
             <div class="mesg" @click="$router.push('temperature')">
               <p>{{ data.temperature }}℃</p>
               <p>温度监测</p>
             </div>
             <div class="progress">
-              <van-progress
+              <Progress
                 :percentage="33"
                 stroke-width="2"
                 :show-pivot="false"
@@ -30,14 +30,14 @@
               />
               <p>33%</p>
             </div>
-          </van-col>
-          <van-col span="11" class="two adata">
+          </Col>
+          <Col span="11" class="two adata">
             <div class="mesg" @click="$router.push('humidity')">
               <p>42%</p>
               <p>湿度监测</p>
             </div>
             <div class="progress">
-              <van-progress
+              <Progress
                 :percentage="70"
                 stroke-width="2"
                 :show-pivot="false"
@@ -47,14 +47,14 @@
               />
               <p>70%</p>
             </div>
-          </van-col>
-          <van-col span="11" class="three adata">
+          </Col>
+          <Col span="11" class="three adata">
             <div class="mesg" @click="$router.push('light')">
               <p>80 lux</p>
               <p>光强监测</p>
             </div>
             <div class="progress">
-              <van-progress
+              <Progress
                 :percentage="50"
                 stroke-width="2"
                 :show-pivot="false"
@@ -64,35 +64,22 @@
               />
               <p>50%</p>
             </div>
-          </van-col>
-        </van-row>
+          </Col>
+        </Row>
       </div>
     </body>
   </div>
 </template>
 
-<script>
-import { Swipe, SwipeItem, Progress, Col, Row } from "vant";
-import { reactive } from "vue";
-export default {
-  name: "home",
-  setup() {
-    const images = [
-      "/src/assets/Home_banner_1.png",
-      "/src/assets/Home_banner_2.png",
-      "/src/assets/Home_banner_3.png",
-    ];
-    let data = reactive({ temperature: "13.8", humidity: "42", light: "80" });
-    return { images, data };
-  },
-  components: {
-    [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem,
-    [Progress.name]: Progress,
-    [Col.name]: Col,
-    [Row.name]: Row,
-  },
-};
+<script setup>
+import { reactive } from 'vue'
+import { Swipe, SwipeItem, Progress, Col, Row } from 'vant'
+import Home_banner_1 from '../../assets/Home_banner_1.png'
+import Home_banner_2 from '../../assets/Home_banner_2.png'
+import Home_banner_3 from '../../assets/Home_banner_3.png'
+
+const images = [Home_banner_1, Home_banner_2, Home_banner_3]
+const data = reactive({ temperature: '13.8', humidity: '42', light: '80' })
 </script>
 
 <style lang="scss" scoped>
