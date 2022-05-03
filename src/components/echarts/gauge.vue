@@ -11,7 +11,7 @@ export default {
 </script>
 <script setup>
 import * as echarts from "echarts";
-import { onMounted } from "vue";
+import { onMounted, onBeforeUnmount } from "vue";
 import { defineProps } from "vue";
 
 const props = defineProps({
@@ -26,6 +26,13 @@ onMounted(() => {
     line();
   }, 100);
 });
+onBeforeUnmount(() => {
+  if (!myChart) {
+    return;
+  }
+  myChart.dispose();
+});
+let myChart;
 let option = {
   series: [
     {
@@ -129,7 +136,7 @@ let option = {
   ],
 };
 const line = function () {
-  let myChart = echarts.init(document.getElementById(props.id));
+  myChart = echarts.init(document.getElementById(props.id));
   myChart.setOption(option);
   window.onresize = function () {
     //自适应大小, 不用的话不会自适应大小。
