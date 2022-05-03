@@ -46,42 +46,42 @@
           <span>技术</span>
           <div class="progress">
             <van-progress
-              :percentage="85"
+              :percentage="data.list.technology"
               stroke-width="6"
               :show-pivot="false"
               track-color="#dde8ed"
               color="#f49186"
               style="width: 70%; margin-right: 20px"
             />
-            <p>80%</p>
+            <p>{{ data.list.technology }}%</p>
           </div>
         </li>
         <li>
           <span>无障碍</span>
           <div class="progress">
             <van-progress
-              :percentage="85"
+              :percentage="data.list.accessible"
               stroke-width="6"
               :show-pivot="false"
               track-color="#dde8ed"
               color="#f49186"
               style="width: 70%; margin-right: 20px"
             />
-            <p>80%</p>
+            <p>{{ data.list.accessible }}%</p>
           </div>
         </li>
         <li>
           <span>安全</span>
           <div class="progress">
             <van-progress
-              :percentage="85"
+              :percentage="data.list.safe"
               stroke-width="6"
               :show-pivot="false"
               track-color="#dde8ed"
               color="#f49186"
               style="width: 70%; margin-right: 20px"
             />
-            <p>80%</p>
+            <p>{{ data.list.safe }}%</p>
           </div>
         </li>
       </ul>
@@ -99,6 +99,8 @@
 import gauge from "@/components/echarts/gauge.vue";
 import category from "@/components/echarts/category.vue";
 import { Progress, NavBar } from "vant";
+import { reactive } from "vue";
+import { getLight } from "@/api/admin.js";
 import * as echarts from "echarts";
 export default {
   name: "light",
@@ -168,7 +170,12 @@ export default {
         },
       ],
     };
-    return { option };
+    let data = reactive({ list: { technology: 0, accessible: 0, safe: 0 } });
+    return { option, data };
+  },
+  async created() {
+    let msg = await getLight();
+    this.data.list = reactive(msg.data);
   },
 };
 </script>
@@ -301,6 +308,18 @@ export default {
     .category {
       height: 100%;
     }
+  }
+}
+::v-deep .van-nav-bar__content {
+  height: 100px;
+  .van-nav-bar__left {
+    font-size: 40px;
+  }
+  .van-nav-bar__title {
+    font-size: 40px;
+  }
+  .van-ellipsis {
+    overflow: visible;
   }
 }
 </style>

@@ -203,7 +203,7 @@ export default {
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss" scoped>
 .containe {
   display: flex;
   flex-direction: column;
@@ -306,8 +306,18 @@ export default {
     }
   }
 }
-.van-ellipsis {
-  overflow: visible;
+
+::v-deep .van-nav-bar__content {
+  height: 100px;
+  .van-nav-bar__left {
+    font-size: 40px;
+  }
+  .van-nav-bar__title {
+    font-size: 40px;
+  }
+  .van-ellipsis {
+    overflow: visible;
+  }
 }
 :root {
   // --van-nav-bar-title-font-size: 40px;

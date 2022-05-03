@@ -82,6 +82,19 @@ route = (pathname, request, response) => {
 
         })
 
+    } else if (request.method == 'GET') {
+        switch (pathname) {
+            case '/api/getlight': {
+                let data = { technology: 76, accessible: 65, safe: 90 }
+                response.writeHead(200, {
+                    "Access-Control-Allow-Origin": "http://localhost:4000",
+                    "Access-Control-Allow-Headers": "Content-Type",
+                    "Content-Type": "application/json"
+                });
+                response.end(JSON.stringify(data))
+                break
+            }
+        }
     }
     else if (request.method === 'OPTIONS') {
         // response.setHeader("Access-Control-Allow-Origin", 'http://localhost:4000')

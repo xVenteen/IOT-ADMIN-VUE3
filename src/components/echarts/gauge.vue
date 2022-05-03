@@ -24,7 +24,7 @@ onMounted(() => {
   // 这里是由于图表渲染快于父元素导致图表比例溢出，做的一个延缓操作
   setTimeout(() => {
     line();
-  }, 500);
+  }, 100);
 });
 let option = {
   series: [

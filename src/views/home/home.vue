@@ -16,7 +16,7 @@
         <van-row justify="space-between">
           <van-col span="11" class="one adata">
             <div class="mesg" @click="$router.push('temperature')">
-              <p>13.8℃</p>
+              <p>{{ data.temperature }}℃</p>
               <p>温度监测</p>
             </div>
             <div class="progress">
@@ -73,6 +73,7 @@
 
 <script>
 import { Swipe, SwipeItem, Progress, Col, Row } from "vant";
+import { reactive } from "vue";
 export default {
   name: "home",
   setup() {
@@ -81,7 +82,8 @@ export default {
       "src/assets/Home_banner_2.png",
       "src/assets/Home_banner_3.png",
     ];
-    return { images };
+    let data = reactive({ temperature: "13.8", humidity: "42", light: "80" });
+    return { images, data };
   },
   components: {
     [Swipe.name]: Swipe,
@@ -93,7 +95,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .containe {
   width: 100vw;
   height: 100vh;

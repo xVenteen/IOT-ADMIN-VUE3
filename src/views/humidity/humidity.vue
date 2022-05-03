@@ -299,4 +299,16 @@ export default {
     }
   }
 }
+::v-deep .van-nav-bar__content {
+  height: 100px;
+  .van-nav-bar__left {
+    font-size: 40px;
+  }
+  .van-nav-bar__title {
+    font-size: 40px;
+  }
+  .van-ellipsis {
+    overflow: visible;
+  }
+}
 </style>
