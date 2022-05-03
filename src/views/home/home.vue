@@ -21,14 +21,14 @@
             </div>
             <div class="progress">
               <van-progress
-                :percentage="50"
+                :percentage="33"
                 stroke-width="2"
                 :show-pivot="false"
                 style="width: 80%"
                 track-color="rgba(255,255,255,0.5)"
                 color="white"
               />
-              <p>70%</p>
+              <p>33%</p>
             </div>
           </van-col>
           <van-col span="11" class="two adata">
@@ -38,7 +38,7 @@
             </div>
             <div class="progress">
               <van-progress
-                :percentage="50"
+                :percentage="70"
                 stroke-width="2"
                 :show-pivot="false"
                 style="width: 80%"
@@ -62,7 +62,7 @@
                 style="width: 80%"
                 color="white"
               />
-              <p>70%</p>
+              <p>50%</p>
             </div>
           </van-col>
         </van-row>
@@ -78,9 +78,9 @@ export default {
   name: "home",
   setup() {
     const images = [
-      "src/assets/Home_banner_1.png",
-      "src/assets/Home_banner_2.png",
-      "src/assets/Home_banner_3.png",
+      "/src/assets/Home_banner_1.png",
+      "/src/assets/Home_banner_2.png",
+      "/src/assets/Home_banner_3.png",
     ];
     let data = reactive({ temperature: "13.8", humidity: "42", light: "80" });
     return { images, data };
