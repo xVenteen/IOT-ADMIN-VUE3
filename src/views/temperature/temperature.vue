@@ -39,7 +39,10 @@
         </div>
         <div class="three adata2">
           <div class="adata-pic">
-            <img src="src/assets/Temperature-page_wind-icon.png" alt="" />
+            <img
+              src="D:\存档\Desktop\GitHub\IOT-ADMIN-VUE3\src\assets\Temperature-page_wind-icon.png"
+              alt=""
+            />
           </div>
           <div class="mesg">
             <p>风速</p>

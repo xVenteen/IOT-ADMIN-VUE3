@@ -29,7 +29,10 @@
         </div>
         <div class="two adata2">
           <div class="adata-pic">
-            <img src="src/assets/Humidity-page_air-humidity-icon.png" alt="" />
+            <img
+              src="D:\存档\Desktop\GitHub\IOT-ADMIN-VUE3\src\assets\Humidity-page_air-humidity-icon.png"
+              alt=""
+            />
           </div>
           <div class="mesg">
             <p>空气湿度</p>
@@ -39,7 +42,7 @@
         <div class="three adata2">
           <div class="adata-pic">
             <img
-              src="src/assets/Humidity-page_soil-moisture-icon-.png"
+              src="D:\存档\Desktop\GitHub\IOT-ADMIN-VUE3\src\assets\Humidity-page_soil-moisture-icon-.png"
               alt=""
             />
           </div>
