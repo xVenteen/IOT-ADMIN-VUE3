@@ -225,13 +225,13 @@ export default {
     display: flex;
     justify-content: space-between;
     .one {
-      background: url("src/assets/Humidity-page_Humidit-black.png");
+      background: url("/src/assets/Humidity-page_Humidit-black.png");
     }
     .two {
-      background: url("src/assets/Humidity-page_air-humidity.png");
+      background: url("/src/assets/Humidity-page_air-humidity.png");
     }
     .three {
-      background: url("src/assets/Humidity-page_soil-moisture.png");
+      background: url("/src/assets/Humidity-page_soil-moisture.png");
     }
     .adata {
       height: 140px;

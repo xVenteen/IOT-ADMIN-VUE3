@@ -227,7 +227,7 @@ export default {
       }
     }
     .one {
-      background: url("src/assets/Light-intensity-page_Light-intensity-black.png");
+      background: url("/src/assets/Light-intensity-page_Light-intensity-black.png");
     }
   }
 

@@ -220,13 +220,13 @@ export default {
     display: flex;
     justify-content: space-between;
     .one {
-      background: url("src/assets/Temperature-page_Temperature.png");
+      background: url("/src/assets/Temperature-page_Temperature.png");
     }
     .two {
-      background: url("src/assets/Temperature-page_carbon-dioxide.png");
+      background: url("/src/assets/Temperature-page_carbon-dioxide.png");
     }
     .three {
-      background: url("src/assets/Temperature-page_wind-speed.png");
+      background: url("/src/assets/Temperature-page_wind-speed.png");
     }
     .adata {
       height: 140px;
@@ -262,7 +262,7 @@ export default {
       //   overflow: hidden;
       background-size: 100% 100%;
       .co2 {
-        background: url("src/assets/Temperature-page_white-background.png");
+        background: url("/src/assets/Temperature-page_white-background.png");
       }
       .adata-pic {
         // width: 100%;
