@@ -180,6 +180,7 @@ export default {
   }
   ::v-deep .van-button {
     height: 2.17333rem;
+    font-size: 30px;
   }
 }
 </style>

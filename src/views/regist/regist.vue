@@ -113,7 +113,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container {
   //   background: url("@/assets/Login-page_Illustration.png");
   position: relative;
@@ -189,12 +189,18 @@ export default {
     }
   }
 }
-:root {
-  --van-font-size-md: 35px;
-  --van-field-label-width: 4rem;
-  --van-cell-vertical-padding: 0.8667rem;
-  --van-button-default-height: 2.17333rem;
-  //   --van-fielf-label-width: 4rem;
-  --van-cell-line-height: 50px;
+.van-form {
+  ::v-deep .van-cell {
+    padding: 0.8667rem;
+    font-size: 35px;
+    line-height: 50px;
+    .van-field__label {
+      width: 4rem;
+    }
+  }
+  ::v-deep .van-button {
+    height: 2.17333rem;
+    font-size: 30px;
+  }
 }
 </style>
