@@ -72,14 +72,14 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
-import { Swipe, SwipeItem, Progress, Col, Row } from 'vant'
-import Home_banner_1 from '../../assets/Home_banner_1.png'
-import Home_banner_2 from '../../assets/Home_banner_2.png'
-import Home_banner_3 from '../../assets/Home_banner_3.png'
+import { reactive } from "vue";
+import { Swipe, SwipeItem, Progress, Col, Row } from "vant";
+import Home_banner_1 from "../../assets/Home_banner_1.png";
+import Home_banner_2 from "../../assets/Home_banner_2.png";
+import Home_banner_3 from "../../assets/Home_banner_3.png";
 
-const images = [Home_banner_1, Home_banner_2, Home_banner_3]
-const data = reactive({ temperature: '13.8', humidity: '42', light: '80' })
+const images = [Home_banner_1, Home_banner_2, Home_banner_3];
+const data = reactive({ temperature: "13.8", humidity: "42", light: "80" });
 </script>
 
 <style lang="scss" scoped>
